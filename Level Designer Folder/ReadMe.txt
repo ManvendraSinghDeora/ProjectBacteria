@@ -1,1 +1,0 @@
-This folder section is for level Designers Document and Assets Works
