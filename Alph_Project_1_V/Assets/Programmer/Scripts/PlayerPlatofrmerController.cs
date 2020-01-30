@@ -21,7 +21,7 @@ public class PlayerPlatofrmerController : MonoBehaviour
     [SerializeField]int extraJumpValues;
     [SerializeField]int GravityScaleValue;
 
-    [SerializeField] Transform RightWallCheck, LeftWallCheck,temp_right,Temp_left;
+    [SerializeField] Transform RightWallCheck, LeftWallCheck;
 
     [SerializeField] Transform GroundCheck;
 
