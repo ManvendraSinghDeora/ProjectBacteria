@@ -561,36 +561,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &635127361
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 635127362}
-  m_Layer: 0
-  m_Name: LeftWallCheck
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &635127362
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 635127361}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.03, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1222178435}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &838261634
 GameObject:
   m_ObjectHideFlags: 0
@@ -709,7 +679,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1167899122}
   m_Layer: 0
-  m_Name: RightWallCheck
+  m_Name: WallCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -723,7 +693,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1167899121}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.03, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1222178435}
@@ -742,7 +712,7 @@ GameObject:
   - component: {fileID: 1222178436}
   - component: {fileID: 1222178433}
   - component: {fileID: 1222178438}
-  - component: {fileID: 1222178437}
+  - component: {fileID: 1222178439}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -841,7 +811,6 @@ Transform:
   - {fileID: 1684231576}
   - {fileID: 278921838}
   - {fileID: 1167899122}
-  - {fileID: 635127362}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -864,41 +833,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1222178437
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1222178432}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc51e56b4778941429bd8333063d91a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isGrounded: 0
-  IsOnWall: 0
-  OnWallRight: 0
-  OnWallLeft: 0
-  WallGrab: 0
-  wallJumped: 0
-  speed: 8
-  WallslideSpeed: 0.5
-  wallJumpLerp: 10
-  jumpForce: 14
-  WallHopForce: 15
-  collisionRadius: 0.15
-  extraJumpValues: 1
-  GravityScaleValue: 4
-  RightWallCheck: {fileID: 1167899122}
-  LeftWallCheck: {fileID: 635127362}
-  temp_right: {fileID: 0}
-  Temp_left: {fileID: 0}
-  GroundCheck: {fileID: 278921838}
-  WhatIsGround:
-    serializedVersion: 2
-    m_Bits: 256
-  jumpKey: 32
 --- !u!50 &1222178438
 Rigidbody2D:
   serializedVersion: 4
@@ -920,6 +854,38 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!114 &1222178439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1222178432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4ffcce2731e58d4a98e1782eca12dd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amountOfJumps: 2
+  movementSpeed: 8
+  jumpForce: 16
+  groundCheckRadius: 0.3
+  wallCheckDistance: 0.5
+  wallSlideSpeed: 0.5
+  wallClimbSpeed: 4
+  movementForceInAir: 50
+  airDragMultiplier: 0.95
+  variableJumpHeightMultiplier: 0.5
+  wallHopForce: 10
+  wallJumpForce: 35
+  wallHopDirection: {x: 1, y: 0.5}
+  wallJumpDirection: {x: 1, y: 2}
+  groundCheck: {fileID: 278921838}
+  wallCheck: {fileID: 1167899122}
+  LedgeCheck: {fileID: 0}
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!1 &1604896791
 GameObject:
   m_ObjectHideFlags: 0

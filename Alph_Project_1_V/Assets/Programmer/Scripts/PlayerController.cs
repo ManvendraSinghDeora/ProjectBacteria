@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     private bool isWallSliding;
     private bool canJump;
     private bool WallGrab;
+    private bool IsTouchingLedge;
 
     private Rigidbody2D rb;
     private Animator anim;
@@ -42,6 +43,7 @@ public class PlayerController : MonoBehaviour
 
     public Transform groundCheck;
     public Transform wallCheck;
+    public Transform LedgeCheck;
 
     public LayerMask whatIsGround;
 
@@ -63,6 +65,7 @@ public class PlayerController : MonoBehaviour
         //UpdateAnimations();
         CheckIfCanJump();
         CheckIfWallSliding();
+        CheckIfGrabbingWall();
     }
 
     private void FixedUpdate()
