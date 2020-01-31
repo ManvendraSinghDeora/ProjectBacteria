@@ -37,7 +37,6 @@ public class PlayerController : MonoBehaviour
     public float wallCheckDistance;
     public float wallSlideSpeed;
     public float wallClimbSpeed;
-    public float movementForceInAir;
     public float airDragMultiplier = 0.95f;
     public float variableJumpHeightMultiplier = 0.5f;
     public float wallHopForce;
@@ -75,7 +74,7 @@ public class PlayerController : MonoBehaviour
     {
         CheckInput();
         CheckMovementDirection();
-        //UpdateAnimations();
+        UpdateAnimations();
         CheckIfCanJump();
         CheckIfWallSliding();
         CheckIfGrabbingWall();

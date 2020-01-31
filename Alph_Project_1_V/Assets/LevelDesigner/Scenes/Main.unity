@@ -208,11 +208,11 @@ BoxCollider2D:
   m_GameObject: {fileID: 491167995}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: ac58f980c61480844a82f9f15f38ccc9, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0103263855, y: 0.05692333}
+  m_Offset: {x: 0.34175158, y: 0.05692339}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -223,7 +223,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 10.280996, y: 2.361535}
+  m_Size: {x: 10.985152, y: 2.361535}
   m_EdgeRadius: 0
 --- !u!212 &491167997
 SpriteRenderer:
@@ -693,7 +693,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 3286163911610860551, guid: 843a362502e656f448ae461fa84bd056,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -714,7 +714,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1222178432}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.77, y: 1.01, z: 0}
+  m_LocalPosition: {x: -13.38, y: -1.39, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_Children:
   - {fileID: 278921838}
@@ -775,22 +775,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4ffcce2731e58d4a98e1782eca12dd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amountOfJumps: 2
+  amountOfJumps: 1
   movementSpeed: 9
   jumpForce: 20
   groundCheckRadius: 0.3
   wallCheckDistance: 1
   wallSlideSpeed: 0.5
   wallClimbSpeed: 8
-  movementForceInAir: 50
   airDragMultiplier: 0.95
   variableJumpHeightMultiplier: 0.5
   wallHopForce: 23
   wallJumpForce: 35
-  ledgeClimbXOffset1: 0.2
+  ledgeClimbXOffset1: 0.8
   ledgeClimbYOffset1: 0
-  ledgeClimbXOffset2: 0.3
-  ledgeClimbYOffset2: 1.5
+  ledgeClimbXOffset2: 1
+  ledgeClimbYOffset2: 2.8
   turnTimerSet: 0
   wallHopDirection: {x: 1, y: 0.5}
   wallJumpDirection: {x: 1, y: 2}
