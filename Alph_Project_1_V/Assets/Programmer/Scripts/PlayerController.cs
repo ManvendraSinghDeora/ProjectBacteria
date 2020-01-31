@@ -178,7 +178,7 @@ public class PlayerController : MonoBehaviour
         if (WallGrab)
         {
             rb.gravityScale = 0;
-            rb.velocity = new Vector2(rb.velocity.x, HorizontalInputDirection * wallClimbSpeed);
+            rb.velocity = new Vector2(rb.velocity.x, VerticalInputDirection * wallClimbSpeed);
         }
         else if (WallGrab == false)
         {
@@ -270,7 +270,7 @@ public class PlayerController : MonoBehaviour
             Vector2 forceToAdd = new Vector2(wallHopForce * wallHopDirection.x * -facingDirection, wallHopForce * wallHopDirection.y);
             rb.AddForce(forceToAdd, ForceMode2D.Impulse);
         }
-        else if ((isWallSliding || isTouchingWall) && HorizontalInputDirection != 0 && canJump)
+        else if ((isWallSliding || isTouchingWall) && HorizontalInputDirection != 0 && canJump) // Wall Jump
         {
             isWallSliding = false;
             amountOfJumpsLeft--;
