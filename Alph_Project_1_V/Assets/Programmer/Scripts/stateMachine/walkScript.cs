@@ -8,10 +8,12 @@ public class walkScript : StateMachineBehaviour
     Rigidbody2D rb;
     public float speed = 2f;
     public float attackRange = 2f;
+
     boss b;
+
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-       player= GameObject.FindGameObjectWithTag("Player").transform;
+        player = GameObject.FindGameObjectWithTag("Player").transform;
         rb = animator.GetComponent<Rigidbody2D>();
         b = animator.GetComponent<boss>();
     }
@@ -25,13 +27,20 @@ public class walkScript : StateMachineBehaviour
 
         if(Vector2.Distance(player.position,rb.position)<=attackRange)
         {
-            animator.SetTrigger("attack");
+            if (b.enemyHp>50)
+            {
+                animator.SetTrigger("attack");
+            }
+            else if(b.enemyHp<=50)
+                animator.SetTrigger("heavyAttack");
         }
     }
 
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         animator.ResetTrigger("attack");
+        animator.ResetTrigger("heavyAttack");
+
     }
 
 

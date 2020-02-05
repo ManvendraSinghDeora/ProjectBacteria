@@ -6,7 +6,16 @@ public class boss : MonoBehaviour
 {
     public Transform player;
     public bool isFlipped = false;
+    public float enemyHp = 100f;
+    public Animator animator;
 
+    private void Update()
+    {
+        if(enemyHp<=50)
+            {
+               animator.SetBool("2ndStage",true);
+            }
+    }
     public void lookAtPlayer()
     {
         Vector3 flipped = transform.localScale;

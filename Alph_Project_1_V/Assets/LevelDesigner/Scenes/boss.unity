@@ -515,6 +515,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1222178435}
   isFlipped: 0
+  enemyHp: 100
+  animator: {fileID: 579212281}
 --- !u!212 &579212278
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1196,7 +1198,7 @@ Transform:
   m_GameObject: {fileID: 1391319176}
   m_LocalRotation: {x: -0, y: -0, z: -0.29089603, w: 0.9567547}
   m_LocalPosition: {x: -1.51, y: 0.09999992, z: 0}
-  m_LocalScale: {x: 3.0551534, y: 1.0601209, z: 1}
+  m_LocalScale: {x: 3.0551534, y: 1.060121, z: 1}
   m_Children: []
   m_Father: {fileID: 579212279}
   m_RootOrder: 0
