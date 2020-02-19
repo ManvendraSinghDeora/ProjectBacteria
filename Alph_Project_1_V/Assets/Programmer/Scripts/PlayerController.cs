@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     private int facingDirection = 1;
 
     private bool isFacingRight = true;
+    private bool isLeft = false;
     private bool isWalking;
     private bool isGrounded;
     private bool isTouchingWall;
@@ -303,8 +304,23 @@ public class PlayerController : MonoBehaviour
         {
             facingDirection *= -1;
             isFacingRight = !isFacingRight;
-            transform.Rotate(0.0f, 180.0f, 0.0f);
+            //    transform.Rotate(0.0f, 180.0f, 0.0f);
+            if (!isLeft)
+            {
+                this.transform.GetComponent<SpriteRenderer>().flipX = true;
+                isLeft = true;
+            }
+            else
+            {
+                this.transform.GetComponent<SpriteRenderer>().flipX = false;
+                isLeft = false;
+            }
         }
+        else
+        {
+
+        }
+         
     }
 
     private void OnDrawGizmos()
