@@ -13,7 +13,7 @@ public class aiMovement : MonoBehaviour
     Vector3 startPos;
     public bool patrolling=true;
     public GameObject player;
-    public static aiMovement instance;
+    public static aiMovement instanceinstance;
     Rigidbody2D rb;
     public float attackRange = 1.5f;  
     private void Start()
