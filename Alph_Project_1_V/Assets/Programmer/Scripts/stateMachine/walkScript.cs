@@ -40,7 +40,6 @@ public class walkScript : StateMachineBehaviour
     {
         animator.ResetTrigger("attack");
         animator.ResetTrigger("heavyAttack");
-
     }
 
 
