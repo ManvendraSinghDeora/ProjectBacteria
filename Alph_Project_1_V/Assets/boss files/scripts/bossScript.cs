@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class bossScript : MonoBehaviour
 {
-    public GameObject bullet,player;
+    public GameObject bullet,player,theboss;    
     GameObject abc;
     Rigidbody2D bRb;
     float bSpeed = 10;
@@ -22,7 +22,7 @@ public class bossScript : MonoBehaviour
     {
         if (bossHealth <= 0)
         {
-            Destroy(gameObject);
+            Destroy(theboss);
         }
         shootBullet();
         if(bossHealth<=60)
@@ -57,7 +57,7 @@ public class bossScript : MonoBehaviour
         }
         if (collision.CompareTag("spit"))
         {
-            bossHealth--;
+            bossHealth -= 5f;
         }
     }
 }
