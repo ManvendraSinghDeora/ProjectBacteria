@@ -74,6 +74,8 @@ public class aiMovement : MonoBehaviour
         if(collision.CompareTag("Player"))
         {
             //player health damage
+            player.GetComponent<PlayerController>().Health--;
+            //1 heart lost
         }
         if(collision.CompareTag("spit"))
         {
