@@ -30,4 +30,13 @@ public class waveBullets : MonoBehaviour
         }
         Destroy(gameObject, 8);
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            Destroy(gameObject);
+            //damage to player
+        }
+    }
 }

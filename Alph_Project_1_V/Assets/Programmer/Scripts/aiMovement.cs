@@ -15,7 +15,10 @@ public class aiMovement : MonoBehaviour
     public GameObject player;
     public static aiMovement instanceinstance;
     Rigidbody2D rb;
-    public float attackRange = 1.5f;  
+    public float attackRange = 1.5f;
+    [SerializeField]
+    private int Health;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -68,9 +71,13 @@ public class aiMovement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.CompareTag("obstacles"))
+        if(collision.CompareTag("Player"))
         {
-            //rb.position = new Vector2(rb.position.x, collision.transform.position.y+1);
+            //player health damage
+        }
+        if(collision.CompareTag("spit"))
+        {
+            Health--;
         }
     }
 }
