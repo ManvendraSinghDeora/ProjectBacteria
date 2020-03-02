@@ -6,17 +6,11 @@ public class Projectile : MonoBehaviour
 {
     void Update()
     {
-        DestroyProjectile();
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        DestroyProjectile();
-    }
-
-
-    void DestroyProjectile()
-    {
-        Destroy(gameObject,3f);
+        if(!collision.CompareTag("Player"))
+        Destroy(gameObject);
     }
 }

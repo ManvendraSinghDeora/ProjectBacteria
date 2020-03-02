@@ -18,9 +18,7 @@ public class PlayerController : MonoBehaviour
     private bool isWallSliding;
     private bool canJump;
     private bool WallGrab;
-    private bool IsTouchingLedge;
     private bool CanClimbLedge;
-    private bool LedgeDetected;
     private bool canMove;
     private bool canFlip;
 
@@ -28,10 +26,11 @@ public class PlayerController : MonoBehaviour
     private Animator anim;
 
     public int amountOfJumps = 1;
-    private int GravityScale = 8;
+    [SerializeField]
+    private int GravityScale;
 
-    public float movementSpeed = 10.0f;
-    public float jumpForce = 16.0f;
+    public float movementSpeed;
+    public float jumpForce;
     public float groundCheckRadius;
     public float wallCheckDistance;
     public float wallSlideSpeed;
@@ -40,21 +39,13 @@ public class PlayerController : MonoBehaviour
     public float variableJumpHeightMultiplier = 0.5f;
     public float wallHopForce;
     public float wallJumpForce;
-    public float ledgeClimbXOffset1 = 0f;
-    public float ledgeClimbYOffset1 = 0f;
-    public float ledgeClimbXOffset2 = 0f;
-    public float ledgeClimbYOffset2 = 0f;
     public float turnTimerSet = 0.1f;
 
     public Vector2 wallHopDirection;
     public Vector2 wallJumpDirection;
-    public Vector2 LedgePosBot;
-    public Vector2 LedgePos1;
-    public Vector2 LedgePos2;
 
     public Transform groundCheck;
     public Transform wallCheck;
-    public Transform LedgeCheck;
 
     public LayerMask whatIsGround;
 
@@ -77,7 +68,6 @@ public class PlayerController : MonoBehaviour
         CheckIfCanJump();
         CheckIfWallSliding();
         CheckIfGrabbingWall();
-        CheckLedgeClimb();
     }
 
     private void FixedUpdate()
@@ -98,59 +88,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void CheckLedgeClimb()
-    {
-        if(LedgeDetected && !CanClimbLedge)
-        {
-            CanClimbLedge = true;
-
-            if (isFacingRight)
-            {
-                LedgePos1 = new Vector2(Mathf.Floor(LedgePosBot.x + wallCheckDistance) - ledgeClimbXOffset1, Mathf.Floor(LedgePosBot.y) + ledgeClimbYOffset1);
-                LedgePos2 = new Vector2(Mathf.Floor(LedgePosBot.x + wallCheckDistance) + ledgeClimbXOffset2, Mathf.Floor(LedgePosBot.y) + ledgeClimbYOffset2);
-            }
-            else
-            {
-                LedgePos1 = new Vector2(Mathf.Ceil(LedgePosBot.x - wallCheckDistance) + ledgeClimbXOffset1, Mathf.Floor(LedgePosBot.y) + ledgeClimbYOffset1);
-                LedgePos2 = new Vector2(Mathf.Ceil(LedgePosBot.x - wallCheckDistance) - ledgeClimbXOffset2, Mathf.Floor(LedgePosBot.y) + ledgeClimbYOffset2);
-            }
-
-            canMove = false;
-            canFlip = false;
-
-            anim.SetBool("canClimbLedge", CanClimbLedge);
-        }
-
-        if (CanClimbLedge)
-        {
-            transform.position = LedgePos1;
-        }
-
-    }
-
-    public void FinishLedgeClimb()
-    {
-        CanClimbLedge = false;
-        transform.position = LedgePos2;
-        canMove = true;
-        canFlip = true;
-        LedgeDetected = false;
-        anim.SetBool("canClimbLedge", CanClimbLedge);
-    }
-
     private void CheckSurroundings()
     {
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround);
 
         isTouchingWall = Physics2D.Raycast(wallCheck.position, transform.right, wallCheckDistance, whatIsGround);
 
-        IsTouchingLedge = Physics2D.Raycast(LedgeCheck.position, transform.right, wallCheckDistance, whatIsGround);
-
-        if(isTouchingWall && !IsTouchingLedge && !LedgeDetected)
-        {
-            LedgeDetected = true;
-            LedgePosBot = wallCheck.position;
-        }
 
     }
 
@@ -189,11 +132,11 @@ public class PlayerController : MonoBehaviour
     {
         if (isFacingRight && HorizontalInputDirection < 0)
         {
-            Flip();
+            //Flip();
         }
         else if (!isFacingRight && HorizontalInputDirection > 0)
         {
-            Flip();
+            //Flip();
         }
 
         if (rb.velocity.x != 0)
@@ -328,6 +271,5 @@ public class PlayerController : MonoBehaviour
         Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
 
         Gizmos.DrawLine(wallCheck.position, new Vector3(wallCheck.position.x + wallCheckDistance, wallCheck.position.y, wallCheck.position.z));
-        Gizmos.DrawLine(LedgeCheck.position, new Vector3(LedgeCheck.position.x + wallCheckDistance, LedgeCheck.position.y, LedgeCheck.position.z));
     }
 }
