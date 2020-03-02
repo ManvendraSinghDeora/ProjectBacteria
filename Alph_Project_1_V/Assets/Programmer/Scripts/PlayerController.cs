@@ -132,11 +132,11 @@ public class PlayerController : MonoBehaviour
     {
         if (isFacingRight && HorizontalInputDirection < 0)
         {
-            //Flip();
+            Flip();
         }
         else if (!isFacingRight && HorizontalInputDirection > 0)
         {
-            //Flip();
+            Flip();
         }
 
         if (rb.velocity.x != 0)
