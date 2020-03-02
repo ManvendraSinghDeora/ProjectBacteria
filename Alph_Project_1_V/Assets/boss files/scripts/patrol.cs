@@ -51,7 +51,10 @@ public class patrol : MonoBehaviour
 
             //1 heart lost
         }
-        if (collision.collider.CompareTag("spit"))
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("spit"))
         {
             Health--;
         }

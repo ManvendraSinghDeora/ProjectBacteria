@@ -40,6 +40,7 @@ public class PlayerController : MonoBehaviour
     public float wallHopForce;
     public float wallJumpForce;
     public float turnTimerSet = 0.1f;
+    public GameObject[] Heart;
 
     public Vector2 wallHopDirection;
     public Vector2 wallJumpDirection;
@@ -176,6 +177,27 @@ public class PlayerController : MonoBehaviour
                 canMove = false;
                 canFlip = false;
             }
+        }
+
+        switch (Health)
+        {
+            case 0:
+                Heart[0].SetActive(false);
+                break;
+            case 1:
+                Heart[1].SetActive(false);
+                break;
+            case 2:
+                Heart[2].SetActive(false);
+                break;
+            case 3:
+                Heart[3].SetActive(false);
+                break;
+            case 4:
+                Heart[4].SetActive(false);
+                break;
+            default:
+                break;
         }
 
         if (!canMove)
