@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D rb;
     private Animator anim;
-
+    public int Health = 5;
     public int amountOfJumps = 1;
     [SerializeField]
     private int GravityScale;
@@ -68,6 +68,10 @@ public class PlayerController : MonoBehaviour
         CheckIfCanJump();
         CheckIfWallSliding();
         CheckIfGrabbingWall();
+        if(Health<=0)
+        {
+            //game end
+        }
     }
 
     private void FixedUpdate()
