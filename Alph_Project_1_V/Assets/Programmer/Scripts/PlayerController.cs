@@ -47,6 +47,7 @@ public class PlayerController : MonoBehaviour
 
     public Transform groundCheck;
     public Transform wallCheck;
+    public GameObject over;
 
     public LayerMask whatIsGround;
 
@@ -72,6 +73,7 @@ public class PlayerController : MonoBehaviour
         if(Health<=0)
         {
             //game end
+            over.SetActive(true);
             Destroy(gameObject);
             
         }
