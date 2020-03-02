@@ -54,9 +54,9 @@ public class patrol : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("spit"))
-        {
-            Health--;
-        }
+            if (collision.CompareTag("spit"))
+            {
+                Health--;
+            }
     }
 }
