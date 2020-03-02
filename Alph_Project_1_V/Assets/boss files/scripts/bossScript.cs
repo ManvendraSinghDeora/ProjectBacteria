@@ -20,7 +20,11 @@ public class bossScript : MonoBehaviour
     }
     private void Update()
     {
-       shootBullet();
+        if (bossHealth <= 0)
+        {
+            Destroy(gameObject);
+        }
+        shootBullet();
         if(bossHealth<=60)
         {
             //2ND STAGE 
@@ -50,6 +54,10 @@ public class bossScript : MonoBehaviour
         else if(collision.CompareTag("wall"))
         {
             Destroy(abc);
+        }
+        if (collision.CompareTag("spit"))
+        {
+            bossHealth--;
         }
     }
 }

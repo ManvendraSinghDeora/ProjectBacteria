@@ -23,6 +23,7 @@ public class bullet : MonoBehaviour
         if(collision.CompareTag("Player"))
         {
             Destroy(gameObject);
+            player.Health--;
             //damage to player
         }
     }

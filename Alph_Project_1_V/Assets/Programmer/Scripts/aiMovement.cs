@@ -12,7 +12,7 @@ public class aiMovement : MonoBehaviour
     public Transform groundDetection;
     Vector3 startPos;
     public bool patrolling=true;
-    public GameObject player;
+    GameObject player;
     public static aiMovement instanceinstance;
     Rigidbody2D rb;
     public float attackRange = 1.5f;
@@ -23,10 +23,15 @@ public class aiMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         startPos = transform.position;
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     private void Update()
     {
+        if(Health<=0)
+        {
+            Destroy(gameObject);
+        }
         if(patrolling)
         {
             //transform.position = Vector2.MoveTowards(transform.position, startPos, speed * Time.deltaTime);
@@ -69,15 +74,15 @@ public class aiMovement : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.CompareTag("Player"))
+        if(collision.collider.CompareTag("Player"))
         {
             //player health damage
-            player.GetComponent<PlayerController>().Health--;
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().Health--;
             //1 heart lost
         }
-        if(collision.CompareTag("spit"))
+        if (collision.collider.CompareTag("spit"))
         {
             Health--;
         }

@@ -7,6 +7,8 @@ public class patrol : MonoBehaviour
     public float speed,startwaittime;
     float waittime;
 
+    [SerializeField]
+    int Health;
     public Transform[] movespot;
     int randomspot;
 
@@ -20,6 +22,10 @@ public class patrol : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Health <= 0)
+        {
+            Destroy(gameObject);
+        }
         transform.position = Vector2.MoveTowards(transform.position, movespot[randomspot].position, 
             speed * Time.deltaTime);
 
@@ -35,5 +41,19 @@ public class patrol : MonoBehaviour
                 waittime -= Time.deltaTime;
             }
         } 
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("Player"))
+        {
+            //player health damage            
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().Health--;
+
+            //1 heart lost
+        }
+        if (collision.collider.CompareTag("spit"))
+        {
+            Health--;
+        }
     }
 }

@@ -71,6 +71,8 @@ public class PlayerController : MonoBehaviour
         if(Health<=0)
         {
             //game end
+            Destroy(gameObject);
+            
         }
     }
 

@@ -36,6 +36,7 @@ public class waveBullets : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             Destroy(gameObject);
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().Health--;
             //damage to player
         }
     }
